@@ -95,4 +95,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6308cad8e87c57429915672c78dfaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perfectRange: 0.05
+  perfectRange: 50
