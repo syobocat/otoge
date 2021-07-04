@@ -9,13 +9,18 @@ public static class CurrentStats
 
     public static List<string[]> currentChart;
 
-    public static string chartName { get; set; }
+    public static string fileName { get; set; }
+    public static string difficultyString { get; set; }
+    public static string difficultyNumber { get; set; }
     public static string songName { get; set; }
     public static string artistName { get; set; }
+    public static float offset { get; set; }
+    public static ushort notesCount { get; set; }
     public static ushort perfect { get; set; }
     public static ushort good { get; set; }
     public static ushort miss { get; set; }
     public static ushort combo { get; set; }
+    public static bool isAuto { get; set; }
 
     public static float bpm
     {

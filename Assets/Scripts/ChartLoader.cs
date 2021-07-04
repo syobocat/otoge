@@ -10,19 +10,30 @@ public static class ChartLoader
     {
         List<string[]> chartData = new List<string[]>();
 
-        TextAsset chart = Resources.Load($"Charts/{CurrentStats.chartName}") as TextAsset;
+        TextAsset chart = Resources.Load($"Charts/{CurrentStats.fileName}_{CurrentStats.difficultyString}") as TextAsset;
         StringReader reader = new StringReader(chart.text);
         string[] chartSetting = reader.ReadLine().Split(',');
         CurrentStats.songName = chartSetting[0];
         CurrentStats.artistName = chartSetting[1];
-        CurrentStats.bpm = int.Parse(chartSetting[2]);
+        CurrentStats.bpm = float.Parse(chartSetting[2]);
+        CurrentStats.offset = float.Parse(chartSetting[3]);
+        CurrentStats.notesCount = 0;
 
         reader.ReadLine();
 
         while (reader.Peek() != -1)
         {
             string line = reader.ReadLine();
-            chartData.Add(line.Split(','));
+            string[] data = line.Split(',');
+            if (data[3] != "0")
+            {
+                CurrentStats.notesCount++;
+                if (data[2] != "0")
+                {
+                    CurrentStats.notesCount++;
+                }
+            }
+            chartData.Add(data);
         }
 
         return chartData;
